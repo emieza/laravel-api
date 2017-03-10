@@ -14,6 +14,15 @@ class PreuPisosBcn extends Migration
     public function up()
     {
         //
+        Schema::create('preupisos', function(Blueprint $table) {
+            $table->increments("id");
+            $table->string("districte");
+            $table->string("barri");
+            $table->string("any");
+            $table->string("semestre");
+            $table->float("preu");
+            $table->timestamps();
+        });
     }
 
     /**
