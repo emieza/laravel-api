@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Preu;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/ping', function(Request $request) {
     return "pong! :)";
 });
+
+Route::get('/barri/{barri}', function(Request $request, $barri) {
+	echo $barri."\n";
+	$preusbarri = Preu::select("barri","districte","any","semestre","preu")->where('barri','like',"%".$barri."%")->orderBy("any","semestre")->get();
+	foreach( $preusbarri as $preu ) {
+		echo $preu."\n";
+	}
+	//echo $preusbarri;
+    //return response()->json( $preusbarri );
+});
+
