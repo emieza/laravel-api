@@ -23,12 +23,12 @@ Route::get('/ping', function(Request $request) {
 });
 
 Route::get('/barri/{barri}', function(Request $request, $barri) {
-	echo $barri."\n";
+	//echo $barri."\n";
 	$preusbarri = Preu::select("barri","districte","any","semestre","preu")->where('barri','like',"%".$barri."%")->orderBy("any","semestre")->get();
-	foreach( $preusbarri as $preu ) {
+	/*foreach( $preusbarri as $preu ) {
 		echo $preu."\n";
-	}
+	}*/
 	//echo $preusbarri;
-    //return response()->json( $preusbarri );
+    return response()->json( $preusbarri );
 });
 
