@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use PreuPisosSeeder;
+//use PreuPisosSeeder;
+
 class DatabaseSeeder extends Seeder
 {
     /**
