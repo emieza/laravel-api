@@ -23,12 +23,14 @@ Route::get('/ping', function(Request $request) {
 });
 
 Route::get('/barri/{barri}', function(Request $request, $barri) {
-	//echo $barri."\n";
+	// retorna les sèries de preus per barris
 	$preusbarri = Preu::select("barri","districte","any","semestre","preu")->where('barri','like',"%".$barri."%")->orderBy("any","semestre")->get();
-	/*foreach( $preusbarri as $preu ) {
-		echo $preu."\n";
-	}*/
-	//echo $preusbarri;
     return response()->json( $preusbarri );
+});
+
+Route::get('/barris', function(Request $request) {
+	// retorna llista de barris
+	$barris = Preu::distinct()->select("barri","districte")->get();
+    return response()->json( $barris );
 });
 
